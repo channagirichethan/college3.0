@@ -1,3 +1,5 @@
+package com.college.controller;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
@@ -12,9 +14,11 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://gjcm.onrender.com") // Replace with your allowed origin
-                        .allowedMethods("GET", "POST", "PUT", "DELETE");
+                        .allowedOrigins("https://gjcm.onrender.com") // Allow the specific origin
+                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                        .allowCredentials(true); // Allow credentials (e.g., cookies)
             }
         };
     }
 }
+
