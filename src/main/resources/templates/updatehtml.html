@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data Form</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-4xl mx-auto bg-white rounded p-4 mt-4">
+        <h2 class="text-2xl font-semibold mb-4">Student Data Form</h2>
+        <p class=" font-semibold mb-4">ಕೆಳಗಿನ ವಿದ್ಯಾರ್ಥಿಯನ್ನು ಅಳಿಸಲು ರೋಲ್ ಸಂಖ್ಯೆ ಕ್ಷೇತ್ರದಲ್ಲಿ 0 ಅನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಸಲ್ಲಿಸು ಬಟನ್ ಒತ್ತಿರಿ</p>
+        <form action="/updatedb" method="post">
+            <!-- Name Field -->
+            
+            <input hidden type="number" name="id" th:value="${student.id}"/>
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" id="name" name="name" th:value="${student.name}" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-indigo-300" >
+            </div>
+
+            <!-- Roll Number Field -->
+            <div class="mb-4">
+                <label for="rollno" class="block text-sm font-medium text-gray-700">Roll Number</label>
+                <input type="text" id="rollno" name="rollno" th:value="${student.rollno}" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-indigo-300" >
+            </div>
+
+            <!-- Email Field -->
+            <div class="mb-4">
+                <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input type="email" id="email" name="email" th:value="${student.email}" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-indigo-300" >
+            </div>
+
+            <!-- Class (cls) Field -->
+            <div class="mb-4">
+                <label for="cls" class="block text-sm font-medium text-gray-700">Class</label>
+                <input type="number" id="cls" name="cls" th:value="${student.cls}" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-indigo-300" >
+            </div>
+            
+            <!-- Stream Field -->
+            <div class="mb-4">
+                <label for="stream" class="block text-sm font-medium text-gray-700">Stream</label>
+                <input type="number" id="cls" name="cls" th:value="${student.getStream()}">
+
+<select class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-indigo-300" id="stream" placeholder="Select a stream" name="stream">
+    <option value="" selected>Choose a stream</option>
+    <option value="ARTS" th:selected="${student.getStream() == 'ARTS'}">ARTS</option>
+    <option value="COMMERCE" th:selected="${student.getStream() == 'COMMERCE'}">COMMERCE</option>
+</select>
+
+            
+            
+            </div>
+            
+
+            <!-- Submit Button -->
+            <div class="mt-6">
+                <button type="submit" class="bg-indigo-500 text-white py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300">
+                    Submit
+                </button>
+            </div>
+        </form>
+        <h2 th:text="${msg}"></h2>
+    </div>
+</body>
+</html>

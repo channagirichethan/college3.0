@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100 ml-6 mr-6">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white py-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-3xl font-semibold">Add Student</h1>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="container mx-auto mt-8">
+		
+        <form class="bg-white shadow-md rounded px-8 py-6 mb-4" action="/addstudentintodb" method="post">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="Student Name">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rollno">Roll Number:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rollno" name="rollno" type="text" placeholder="Roll Number">
+            </div>
+            
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="rollno">Current Class:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="cls" name="cls" type="text" placeholder="Current Class">
+            </div>
+            
+             <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email:</label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="text" placeholder="Enter Email">
+            </div>
+ <div class="mb-4">
+	 
+	 <!-- Stream Field -->
+            <div class="mb-4">
+                <label for="stream"class="block text-gray-700 text-sm font-bold mb-2">Stream</label>
+              
+
+<select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="stream" placeholder="Select a stream" name="stream">
+    <option value="" selected>Choose a stream</option>
+    <option value="ARTS">ARTS</option>
+    <option value="COMMERCE">COMMERCE</option>
+</select>
+
+            
+            
+            </div>
+               <h2 class="text-green-600 font-bold text-lg" th:text="${msg}"></h2>    </div>
+               
+            <div class="flex items-center justify-between">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+                    Add Student
+                </button>
+            </div>
+        </form>
+    </main>
+</body>
+</html>

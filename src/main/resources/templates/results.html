@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-4xl mx-auto bg-white rounded p-2 mt-4">
+        <h2 class="text-2xl font-semibold mb-4">Student Data</h2>
+        <table class="min-w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 w-1/4 md:w-1/6 py-2">Roll Number</th>
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Class</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td th:text="${ st.rollno }" class="border w-1/4 md:w-1/6 px-4 py-2"></td>
+                    <td th:text="${ st.name }" class="border px-4 py-2">{{ st.name }}</td>
+                    <td th:text="${ st.cls }" class="border px-4 py-2">{{ st.cls }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Display map details as ArrayLists -->
+    <div class="max-w-4xl mx-auto bg-white rounded p-2 mt-4">
+        <table class="min-w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Test 1 Details</th>
+                    <th class="px-4 py-2">Test 2 Details</th>
+                    <th class="px-4 py-2">Exam 1 Details</th>
+                    <th class="px-4 py-2">Exam 2 Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="border px-4 py-2">
+                        <ul>
+                            <li th:each="entry : ${st.test1.entrySet()}">
+                                <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <ul>
+                            <li th:each="entry : ${st.test2.entrySet()}">
+                                <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <ul>
+                            <li th:each="entry : ${st.exam1.entrySet()}">
+                                <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+                            </li>
+                        </ul>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <ul>
+                            <li th:each="entry : ${st.exam2.entrySet()}">
+                                <span th:text="${entry.key}"></span>: <span th:text="${entry.value}"></span>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

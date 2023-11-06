@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+		/* Custom CSS for styling */
+		*{
+			padding-left: 2px;
+			padding-right: 2px;
+		}
+.nav-component {
+    flex: 1;
+    max-width: 200px; /* Adjust as needed */
+    text-align: center;
+    margin: 10px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.nav-component:hover {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    color: #000; /* Text color */
+    font-weight: bold;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.nav-link:hover {
+    background-color: #000; /* Hover background color */
+    color: #fff; /* Hover text color */
+}
+
+	</style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Dashboard Container -->
+    <div class="flex flex-col h-screen">
+
+        <!-- Dashboard Header -->
+        <header class="bg-blue-600 text-white py-4">
+            <div class="container mx-auto text-center">
+                <h1 th:text="'WELCOME '+${Teacher.getName()}" class="text-3xl font-semibold">Dashboard</h1>
+            </div>
+           <div class="text-left flex flex-col">
+    <h1 th:text="'Subject Handling: ' + ${Teacher.getSubject()}" class="text-xl font-bold"></h1>
+    <a href="/logout" class="text-white text-xl font-semibold text-right p-2 hover:underline">Logout</a>
+     <a href="/logout" class="text-white text-xl font-semibold text-right p-2 hover:underline">Reset Password</a>
+</div>
+
+            
+            
+        </header>
+
+        <!-- Dashboard Navigation -->
+<nav class="bg-gray-900 text-white py-4">
+	<br>
+	<br>
+    <div class="container mx-auto flex flex-wrap justify-center md:space-x-6">
+        <div class="nav-component">
+            <a href="/addstudent" class="nav-link">
+                Add <br> Student <br> ವಿದ್ಯಾರ್ಥಿಯನ್ನು ನೋಂದಾಯಿಸಿ
+            </a>
+        </div>
+        <br>
+        <div class="nav-component">
+            <a href="/studentdetails" class="nav-link">
+                View </br>Students <br> ವಿದ್ಯಾರ್ಥಿಗಳ ಪಟ್ಟಿ
+            </a>
+        </div>
+        <div class="nav-component">
+            <a href="/updatestudent" class="nav-link">
+                Update/Delete <br> Students <br> ವಿದ್ಯಾರ್ಥಿಗಳನ್ನು ನವೀಕರಿಸಿ/ಅಳಿಸಿ
+            </a>
+        </div>
+        <div class="nav-component">
+            <a href="/addmarkslink" class="nav-link">
+                Add / View  &nbsp; Marks <br> ಅಂಕಗಳನ್ನು ಸೇರಿಸಿ / ವೀಕ್ಷಿಸಿ
+            </a>
+        </div>
+    </div>
+    <h1>ADD STUDENT AND UPDATE STUDENT ARE RESTRICTED AND AVAILABLE ONLY FOR CERTAIN USERS FOR SECURITY ISSUES</h1>
+</nav>
+
+
+
+        <H1 th:text="${msg}"></H1>
+        <!-- Dashboard Content -->
+       
+
+    </div>
+   
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+    function toggleForm(button) {
+        var formDiv = button.nextElementSibling; // Get the next sibling div
+        formDiv.style.display = formDiv.style.display === 'none' ? 'block' : 'none'; // Toggle the visibility
+    }
+</script>
+ 
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-4xl mx-auto bg-white rounded p-4 mt-4">
+        <h2 class="text-2xl font-semibold mb-4">Student List</h2>
+        <h3>To Delete Student Press update and in roll no field enter 0 and submit <br> ವಿದ್ಯಾರ್ಥಿಯನ್ನು ಅಳಿಸಲು ಅಪ್‌ಡೇಟ್ ಬಟನ್ ಒತ್ತಿರಿ ಮತ್ತು ರೋಲ್ ನೋ ಫೀಲ್ಡ್‌ನಲ್ಲಿ 0 ಅನ್ನು ನಮೂದಿಸಿ ಮತ್ತು ಸಲ್ಲಿಸಿ</h3>
+        <table class="min-w-full">
+            <thead>
+                <tr>
+                    <th class="px-4 py-2">Roll Number</th>
+                    <th class="px-4 py-2">Name</th>
+                    <th class="px-4 py-2">Class/Stream</th>
+                    <th class="px-4 py-2">Email</th>
+                    <th class="px-4 py-2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+    <!-- Iterate through the list of students and display their data -->
+    <tr th:each="student : ${students}">
+        <td class="border px-4 py-2" th:text="${student.rollno}"></td>
+        <td class="border px-4 py-2" th:text="${student.name}"></td>
+        <td class="border px-4 py-2" th:text="${student.cls} +' '+ ${student.getStream()}"></td>
+        <td class="border px-4 py-2" th:text="${student.email}"></td>
+        <td class="border px-4 py-2">
+            <div >
+                <form method="POST" action="/updatedata">
+                    <input type="hidden" th:value="${student.rollno}" name="rollno" />
+                    <input type="hidden" th:value="${student.email}" name="email" />
+                    <input type="submit" class="border rounded text-white bg-green-700 py-2 px-4 hover:bg-green-600" value="Update">
+                </form>
+            </div>
+        </td>
+    </tr>
+</tbody>
+
+        </table>
+    </div>
+
+    
+
+    <!-- JavaScript to show the update form when clicking the "Update" button -->
+    
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <script>
+        function selectClass(classValue) {
+            document.getElementById("selectedClass").value = classValue;
+            document.getElementById("myForm").submit();
+        }
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Include jQuery -->
+    <script>
+$(document).ready(function () {
+    $("form.add-marks-form").submit(function (event) {
+        event.preventDefault(); // Prevent the default form submission
+        var form = $(this);
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            data: form.serialize(),
+            success: function (response) {
+                // Handle the response here, e.g., show a success message
+              
+                alert("Marks Added");
+                // Update the placeholder with the new value
+                var newValue = response; // Adjust this based on your response data
+                form.find("input[type='number']").attr("placeholder", newValue);
+            },
+            error: function (xhr, status, error) {
+                // Handle errors here, e.g., show an error message
+                console.log(error);
+            }
+        });
+    });
+});
+</script>
+    
+    
+</head>
+<body class="bg-gray-100 p-4">
+<div class="max-w-md mx-auto bg-white rounded p-4">
+    <h1 class="text-2xl font-semibold mb-4">Select Class</h1>
+    <form id="myForm" action="/fetch-student-data2" method="post">
+        <input type="hidden" id="selectedClass" name="selectedClass" value="">
+        <div class="flex space-x-4"> <!-- Add space-x-4 for a 1rem (16px) gap between buttons -->
+            <button type="button" onclick="selectClass('11')" class="flex-1 bg-blue-500 text-white rounded p-2 hover:bg-blue-700">
+                Class 11
+            </button>
+            <button type="button" onclick="selectClass('12')" class="flex-1 bg-blue-500 text-white rounded p-2 hover:bg-blue-700">
+                Class 12
+            </button>
+        </div>
+    </form>
+</div>
+    
+<div class="max-w-4xl mx-auto  rounded p-4 mt-4" th:if="${studentDataList}">
+    <h2 class="text-2xl font-semibold mb-4">Student Data for Class <span th:text="${selectedClass}"></span></h2>
+    <table class="min-w-auto">
+        <thead>
+            <tr>
+                <th class="px-4 w-15 py-2">Roll Number</th>
+                <th class="px-4 py-2">Name</th>
+                <th class="px-4 py-2">T 1</th>
+                 <th class="px-4 py-2">T 2</th>
+                  <th class="px-4 py-2">Mid</th>
+                    <th class="px-4 py-2">Annual</th>
+                  
+                <!-- Add additional table headers for test1, test2, exam1, and exam2 if needed -->
+            </tr>
+        </thead>
+        <tbody >
+            <tr th:each="student : ${studentDataList}">
+                <td class="border w-15 px-4 py-2" th:text="${student.rollno}"></td>
+                <td class="border px-4 py-2" th:text="${student.name}"></td>
+                <td class="border px-4 py-2">
+<!-- Your existing HTML code -->
+
+<!-- Add a unique class to the form to identify it -->
+<form class="add-marks-form" action="/addmarks" method="post">
+    <input type="number" th:placeholder="${student.getTest1().get(user.getSubject())}" class="text-black border rounded p-2" min="0" max="100" name="marks">
+    <input type="hidden" th:value="${student.rollno}" name="rollno">
+    <input type="hidden" value="t1" name="testname">
+    <input type="submit" value="Add" class="bg-blue-500 text-white rounded p-2 mt-2 w-15 hover:bg-blue-700">
+</form>
+
+</td>
+ <td class="border px-4 py-2">
+<!-- Your existing HTML code -->
+
+<!-- Add a unique class to the form to identify it -->
+<form class="add-marks-form" action="/addmarks" method="post">
+    <input type="number" th:placeholder="${student.getTest2().get(user.getSubject())}" class="text-black border rounded p-2" min="0" max="100" name="marks">
+    <input type="hidden" th:value="${student.rollno}" name="rollno">
+    <input type="hidden" value="t2" name="testname">
+    <input type="submit" value="Add" class="bg-blue-500 text-white rounded p-2 mt-2 w-15 hover:bg-blue-700">
+</form>
+
+</td>
+ <td class="border px-4 py-2">
+<!-- Your existing HTML code -->
+
+<!-- Add a unique class to the form to identify it -->
+<form class="add-marks-form" action="/addmarks" method="post">
+    <input type="number" th:placeholder="${student.getExam1().get(user.getSubject())}" class="text-black border rounded p-2" min="0" max="100" name="marks">
+    <input type="hidden" th:value="${student.rollno}" name="rollno">
+    <input type="hidden" value="e1" name="testname">
+    <input type="submit" value="Add" class="bg-blue-500 text-white rounded p-2 mt-2 w-15 hover:bg-blue-700">
+</form>
+
+</td>
+ <td class="border px-4 py-2">
+<!-- Your existing HTML code -->
+
+<!-- Add a unique class to the form to identify it -->
+<form class="add-marks-form" action="/addmarks" method="post">
+    <input type="number" th:placeholder="${student.getExam2().get(user.getSubject())}" class="text-black border rounded p-2" min="0" max="100" name="marks">
+    <input type="hidden" th:value="${student.rollno}" name="rollno">
+    <input type="hidden" value="e2" name="testname">
+    <input type="submit" value="Add" class="bg-blue-500 text-white rounded p-2 mt-2 w-15 hover:bg-blue-700">
+</form>
+
+</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
