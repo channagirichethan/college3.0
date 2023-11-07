@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ import com.college.repository.TestRepo;
 
 import jakarta.servlet.http.HttpSession;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
 public class MainController {
 	
@@ -42,7 +44,7 @@ public class MainController {
 	DataRepo dr;
 	
 	
-	
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping(value="/")
 	public String index() {
 		return "index";
