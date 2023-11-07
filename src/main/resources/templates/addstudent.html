@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Student</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css">
+    <script>
+        function upper(){
+               var name = document.getElementById('name');
+               name.value = name.value.toUpperCase();
+        }
+    </script>
 </head>
 <body class="bg-gray-100 ml-6 mr-6">
     <!-- Header -->
@@ -20,22 +26,35 @@
         <form class="bg-white shadow-md rounded px-8 py-6 mb-4" action="/addstudentintodb" method="post">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="name">Name:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text" placeholder="Student Name">
+                <input required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" onblur="upper()" name="name" type="text" placeholder="Student Name">
             </div>
 
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="rollno">Roll Number:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rollno" name="rollno" type="text" placeholder="Roll Number">
+                <input required class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="rollno" name="rollno" type="number"  placeholder="Roll Number">
             </div>
+            
+            
             
             <div class="mb-4">
-                <label class="block text-gray-700 text-sm font-bold mb-2" for="rollno">Current Class:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="cls" name="cls" type="text" placeholder="Current Class">
+                <label for="stream"class="block text-gray-700 text-sm font-bold mb-2">Current Class</label>
+              
+
+<select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="stream" placeholder="Select a stream" required name="stream">
+    <option value="" selected>Choose Class</option>
+    <option value="11"><B>1 PUC</B></option>
+    <option value="12"><B>2 PUC</B></option>
+</select>  
             </div>
-            
+
+
+
+
+
+
              <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email:</label>
-                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="text" placeholder="Enter Email">
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email" placeholder="Enter Email">
             </div>
  <div class="mb-4">
 	 
@@ -61,6 +80,7 @@
                 </button>
             </div>
         </form>
+        
     </main>
 </body>
 </html>
