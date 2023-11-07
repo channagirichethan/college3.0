@@ -6,17 +6,15 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
-public class CorsConfig {
-
+public class WebConfig
+{
     @Bean
-    public WebMvcConfigurer corsConfigurer() {
+    public WebMvcConfigurer corsConfigurer()
+    {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedOrigins("https://gjcm.onrender.com") // Allow the specific origin
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
-                        .allowCredentials(true); // Allow credentials (e.g., cookies)
+                registry.addMapping("/**").allowedOrigins("http://gjcm.onrender.com");
             }
         };
     }
