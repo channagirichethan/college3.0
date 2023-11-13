@@ -7,6 +7,10 @@
     <!-- Include Tailwind CSS -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <style>
+		td {
+			color: lightseagreen;
+			font-weight: bold;
+		}
 		span {
 			display: inline-flex;
 			font-weight: bold;
@@ -21,24 +25,24 @@
             <thead>
                 <tr>
                     <th class="px-4 py-2">Category</th>
-                    <th class="px-4 py-2">Details</th>
+                    <th class="px-4 py-2" style="min-width:max-content;">Details</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="border px-4 py-2">Roll Number</td>
-                    <td th:text="${ st.rollno }" class="border px-4 py-2"></td>
+                    <td style="color: darksalmon"; class="border px-4 py-2">Roll Number</td>
+                    <td style="color: midnightblue;" th:text="${ st.rollno }" class="border px-4 py-2"></td>
                 </tr>
                 <tr>
-                    <td class="border px-4 py-2">Name</td>
-                    <td th:text="${ st.name }" class="border px-4 py-2"></td>
+                    <td style="color: darksalmon"; class="border px-4 py-2">Name</td>
+                    <td style="color: midnightblue;" th:text="${ st.name }" class="border px-4 py-2"></td>
                 </tr>
                 <tr>
-                    <td class="border px-4 py-2">Class</td>
-                    <td th:text="${ st.cls }" class="border px-4 py-2"></td>
+                    <td style="color: darksalmon"; class="border px-4 py-2">Class</td>
+                    <td style="color: midnightblue;" th:text="${ st.cls }" class="border px-4 py-2"></td>
                 </tr>
                 <tr>
-                    <td class="border px-4 py-2">Test 1 Details</td>
+                    <td class="border px-4 py-2" >Test 1 Details</td>
                     <td class="border px-4 py-2">
                         <ul>
                             <li th:each="entry : ${st.test1.entrySet()}">
